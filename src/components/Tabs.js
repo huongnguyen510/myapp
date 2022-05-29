@@ -1,25 +1,60 @@
-import React from "react";
-import "../styles/Tabs.css";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Tab from './Tab';
 
-function Tabs({ tab }) {
-  return (
-    <div classname="Tabs">
-      <input id="tab-1" type="radio" name="tabs" />
-      <label htmlFor="tab-1">My Font</label>
+class Tabs extends Component {
+  static propTypes = {
+    children: PropTypes.instanceOf(Array).isRequired,
+  }
 
-      <input id="tab-2" type="radio" name="tabs" defaultChecked/>
-      <label htmlFor="tab-2">Buy Font</label>
+  constructor(props) {
+    super(props);
 
-      <div className="content">
-        <div id="content-1" classname="content-item">
-          <p>This is tab 11111111</p>
+    this.state = {
+      activeTab: this.props.children[0].props.label,
+    };
+  }
+
+  onClickTabItem = (tab) => {
+    this.setState({ activeTab: tab });
+  }
+
+  render() {
+    const {
+      onClickTabItem,
+      props: {
+        children,
+      },
+      state: {
+        activeTab,
+      }
+    } = this;
+
+    return (
+      <div className="tabs">
+        <div className="tab-list">
+          {children.map((child) => {
+            const { label } = child.props;
+
+            return (
+              <Tab
+                activeTab={activeTab}
+                key={label}
+                label={label}
+                onClick={onClickTabItem}
+              />
+            );
+          })}
         </div>
-        <div id="content-2" classname="content-item">
-          <p>This is tab 22222222</p>
+        <div className="tab-content">
+          {children.map((child) => {
+            if (child.props.label !== activeTab) return undefined;
+            return child.props.children;
+          })}
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
-  
+
 export default Tabs;
