@@ -12,7 +12,7 @@ class Tabs extends Component {
 
     this.state = {
       activeTab: this.props.children[0].props.label,
-    };
+    };  
   }
 
   onClickTabItem = (tab) => {
@@ -32,21 +32,24 @@ class Tabs extends Component {
 
     return (
       <div className="tabs">
-        <div className="tab-list">
-          {children.map((child) => {
-            const { label } = child.props;
+        <div className="tabs-header">
+          <h1>Please select one font</h1>
+          <div className="tabs-list">
+            {children.map((child) => {
+              const { label } = child.props;
 
-            return (
-              <Tab
-                activeTab={activeTab}
-                key={label}
-                label={label}
-                onClick={onClickTabItem}
-              />
-            );
-          })}
+              return (
+                <Tab
+                  activeTab={activeTab}
+                  key={label}
+                  label={label}
+                  onClick={onClickTabItem}
+                />
+              );
+            })}
+          </div>
         </div>
-        <div className="tab-content">
+        <div className="tabs-content">
           {children.map((child) => {
             if (child.props.label !== activeTab) return undefined;
             return child.props.children;

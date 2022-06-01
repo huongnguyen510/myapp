@@ -22,19 +22,14 @@ class Tab extends Component {
       },
     } = this;
 
-    let className = 'tab-list-item';
+    let className = 'tabs-list__item';
 
     if (activeTab === label) {
       className += ' active';
     }
 
     return (
-      <h3
-        className={className}
-        onClick={onClick}
-      >
-        {label}
-      </h3>
+      <div className={className} onClick={onClick}>{label}</div>
     );
   }
 }
