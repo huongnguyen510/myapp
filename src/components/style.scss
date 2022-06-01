@@ -1,0 +1,96 @@
+// @font-face {
+//   font-family: 'Carlito';
+//   src: url('./../fonts/Carlito.eot');
+//   src: url('./../fonts/Carlito.eot?#iefix') format('embedded-opentype'),
+//         url('./../fonts/Carlito.woff') format('woff'),
+//         url('./../fonts/Carlito.ttf') format('truetype'),
+//         url('./../fonts/Carlito.svg#Carlito') format('svg');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+
+html {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+  width: 800px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+.tab-list {
+  text-align: center;
+
+  &-item {
+    display: inline-block;
+    color: gray;
+    padding: 15px 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+
+    &.active {
+      color: red;
+    }
+  }
+}
+
+.tab-content {
+  padding: 50px;
+  border: 2px solid #ccc;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.font-item {
+  width: 25%;
+}
+
+.square {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  // border: 3px solid #666;
+  border-radius: 20px;
+  position: relative;
+
+  span {
+    position: absolute;
+    left: 20px;
+    bottom: 15px;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    opacity: 0.5;
+  }
+
+  // &.big {
+  //   width: 150px;
+  //   height: 150px;
+
+  //   span {
+  //     font-size: 45px;
+  //   }
+  // }
+
+  &.green {
+    background: #00A653;
+  }
+
+  &.pink {
+    background: #FE7FC3;
+  }
+
+  &.blue {
+    background: #046DFF;
+  }
+}
